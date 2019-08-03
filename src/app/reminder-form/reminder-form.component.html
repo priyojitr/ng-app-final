@@ -1,0 +1,32 @@
+<mat-card class="c-card">
+    <mat-card-title>
+        {{ fmMode }} Reminder</mat-card-title>
+    <div class="c-form">
+        <br>
+        <form #reminderFormDir="ngForm" [formGroup]="reminderForm" (ngSubmit)="submitReminder(reminderFormDir)">
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="reminderName" placeholder="Reminder Name" name="reminderName" formControlName="reminderName">
+                <mat-error>{{ getReminderNameBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="reminderDescription" placeholder="Reminder Description" name="reminderDescription"
+                    formControlName="reminderDescription">
+                <mat-error>{{ getReminderDescriptionBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="reminderType" placeholder="Reminder Type" name="reminderType" formControlName="reminderType">
+                <mat-error>{{ getReminderTypeBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <div class="c-done-btn-wrapper">
+                <button mat-button type="submit" [disabled]="!reminderForm.valid">Submit</button>
+                <button mat-button type="button" (click)="resetReminder(reminderFormDir)">Reset</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <a mat-button routerLink="/dashboard">
+            <h1>{{ this.title }}</h1>
+        </a>
+        <span class="menu-spacer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <div>
+            <!-- prior to login - links available -> login & register for users -->
+            <a mat-button *ngIf="!authService.isUserLoggedIn()" routerLink="/login">Login</a>
+            <a mat-button *ngIf="!authService.isUserLoggedIn()" routerLink="/register">Register</a>
+
+            <!-- after login - links available -> create user, note, category & reminder -->
+            <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/register">Add New User</a>
+            <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/dashboard">Notes</a>
+            <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/reminders">Reminders</a>
+            <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/categories">Categories</a>
+
+            <!-- for logout - clearing of browser storage -->
+            <a mat-button *ngIf="authService.isUserLoggedIn()" routerLink="/logout">LogOut</a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

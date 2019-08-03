@@ -1,0 +1,42 @@
+<mat-card class="c-card">
+    <mat-card-title>Register User</mat-card-title>
+    <div class="c-form">
+        <br>
+        <form #regFormDir="ngForm" [formGroup]="registerForm" (ngSubmit)="createUser(registerForm)">
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" [(ngModel)]="user.firstName" id="firstname" placeholder="First Name" name="firstname"
+                    formControlName="firstname" class="firstname">
+                <mat-error>{{ getFirstNameBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" [(ngModel)]="user.lastName" id="lastname" placeholder="Last Name" name="lastname"
+                    formControlName="lastname" class="lastname">
+                <mat-error>{{ getLastNameBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" [(ngModel)]="user.userId" id="userid" placeholder="User Id" name="userid"
+                    formControlName="userid" class="userid">
+                <mat-error>{{ getUserIdBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="password" [(ngModel)]="user.userPassword" id="userpassword" placeholder="User Password" name="userpassword"
+                    formControlName="userpassword" class="userpassword">
+                <mat-error>{{ getUserPwdBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" [(ngModel)]="user.userRole" id="userrole" placeholder="User Role" name="userrole"
+                    formControlName="userrole" class="userrole">
+                <mat-error>{{ getUserRoleBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <div class="c-done-btn-wrapper">
+                <button mat-button type="submit" [disabled]="!registerForm.valid">Submit</button>
+                <button mat-button type="button" (click)="regFormReset(regFormDir)">Reset</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

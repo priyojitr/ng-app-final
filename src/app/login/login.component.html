@@ -1,0 +1,23 @@
+<mat-card class="c-card">
+    <mat-card-title>Login</mat-card-title>
+    <div class="c-form">
+        <br>
+        <form [formGroup]="loginForm" (ngSubmit)="authenticate()">
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="username" placeholder="Username" name="username"
+                    formControlName="username" class="username">
+                <mat-error>{{ getUsernameBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="password" id="password" placeholder="Password" name="password"
+                    formControlName="password" class="password">
+                <mat-error>{{ getPasswordBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br><br>
+            <div class="c-done-btn-wrapper">
+                <button mat-button type="submit" [disabled]="!loginForm.valid">Submit</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

@@ -1,0 +1,35 @@
+<mat-card class="c-card-table">
+    <mat-card-title>Category List</mat-card-title>
+    <br>
+    <a routerLink="/categoryform">
+        <button mat-raised-button color="primary">Create New Category</button>
+    </a>
+    <br>
+    <br>
+    <div *ngIf="categoryList != 0">
+        <mat-table [dataSource]="categoryList" class="c-form">
+
+            <ng-container matColumnDef="categorytitle">
+                <mat-header-cell *matHeaderCellDef>Category Title</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.categoryName }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="categorydesc">
+                <mat-header-cell *matHeaderCellDef>Category Description</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.categoryDescription }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let data">
+                    <button mat-raised-button (click)="edit(data)" color="primary">Edit</button>
+                    <!-- spacer -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button (click)="delete(data)" color="warn">Delete</button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="header"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: header"></mat-row>
+        </mat-table>
+    </div>
+</mat-card>

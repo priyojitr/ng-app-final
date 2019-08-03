@@ -1,0 +1,40 @@
+<mat-card class="c-card-table">
+    <mat-card-title>Reminder List</mat-card-title>
+    <br>
+    <a routerLink="/reminderform">
+        <button mat-raised-button color="primary">Create New Reminder</button>
+    </a>
+    <br>
+    <br>
+    <div *ngIf="reminderList != 0">
+        <mat-table [dataSource]="reminderList" class="c-form">
+
+            <ng-container matColumnDef="remindername">
+                <mat-header-cell *matHeaderCellDef>Reminder Name</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.reminderName }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="remindertype">
+                <mat-header-cell *matHeaderCellDef>Reminder Type</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.reminderType }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="reminderdesc">
+                <mat-header-cell *matHeaderCellDef>Reminder Description</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.reminderDescription }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let data">
+                    <button mat-raised-button (click)="edit(data)" color="primary">Edit</button>
+                    <!-- spacer -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button (click)="delete(data)" color="warn">Delete</button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="header"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: header"></mat-row>
+        </mat-table>
+    </div>
+</mat-card>

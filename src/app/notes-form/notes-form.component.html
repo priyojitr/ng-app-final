@@ -1,0 +1,58 @@
+<mat-card class="c-card">
+    <mat-card-title>{{ fmMode }} Note</mat-card-title>
+    <div class="c-form">
+        <br>
+        <form #noteFormDir="ngForm" [formGroup]="noteForm" (ngSubmit)="submitNote(noteFormDir)">
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="noteId" [(ngModel)]="note.noteId" placeholder="Note ID" name="noteId" formControlName="noteId">
+                <mat-error>{{ getNoteIdBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="noteTitle" [(ngModel)]="note.noteTitle" placeholder="Note Title" name="noteTitle" formControlName="noteTitle">
+                <mat-error>{{ getNoteTitleBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="noteContent" [(ngModel)]="note.noteContent" placeholder="Note Content" name="noteContent"
+                    formControlName="noteContent">
+                <mat-error>{{ getNoteContentBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="noteStatus" [(ngModel)]="note.noteStatus" placeholder="Note Status" name="noteStatus" formControlName="noteStatus">
+                <mat-error>{{ getNoteStatusBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <mat-label>Select Category</mat-label>
+                <mat-select formControlName="noteCategory">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let category of categories" [value]="category">
+                        {{ category.categoryName }}
+                    </mat-option>
+                </mat-select>
+                <mat-error>{{ getNoteCategoryBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <mat-label>Reminders</mat-label>
+                <mat-select formControlName="noteReminder" multiple>
+                    <mat-option *ngFor="let reminder of reminders" [value]="reminder">{{ reminder.reminderName }}</mat-option>
+                </mat-select>
+                <mat-error>{{ getNoteReminderBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <div class="c-done-btn-wrapper">
+                <button mat-button type="submit" [disabled]="!noteForm.valid">Submit</button>
+                <button mat-button type="button" (click)="resetNote(noteFormDir)">Reset</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

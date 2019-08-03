@@ -1,0 +1,45 @@
+<mat-card class="c-card c-card-table">
+    <mat-card-title>List of Notes</mat-card-title>
+    <br>
+    <button mat-raised-button color="primary" (click)="newform()">Create New Note</button>
+    <br>
+    <br>
+    <div *ngIf="noteList != 0">
+        <mat-table [dataSource]="noteList" class="c-form">
+
+            <ng-container matColumnDef="noteid">
+                <mat-header-cell *matHeaderCellDef>
+                    <h4>Note ID</h4>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.noteId }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="notetitle">
+                <mat-header-cell *matHeaderCellDef>Note Title</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.noteTitle }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="notecontent">
+                <mat-header-cell *matHeaderCellDef>Note Content</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.noteContent }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="notestatus">
+                <mat-header-cell *matHeaderCellDef>Note Status</mat-header-cell>
+                <mat-cell *matCellDef="let data">{{ data.noteStatus }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                <mat-cell *matCellDef="let data">
+                    <button mat-raised-button (click)="edit(data)" color="primary">Edit</button>
+                    <!-- spacer -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button (click)="delete(data)" color="warn">Delete</button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="columnHeader"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnHeader"></mat-row>
+        </mat-table>
+    </div>
+</mat-card>

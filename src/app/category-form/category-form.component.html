@@ -1,0 +1,27 @@
+<mat-card class="c-card">
+    <mat-card-title>
+        {{ fmMode }} Category</mat-card-title>
+    <div class="c-form">
+        <br>
+        <form #categoryFormDir="ngForm" [formGroup]="categoryForm" (ngSubmit)="submitCategory(categoryFormDir)">
+
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="categoryName" placeholder="Category Name" name="categoryName" formControlName="categoryName">
+                <mat-error>{{ getCategoryNameBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <mat-form-field class="c-form-field-wrapper">
+                <input matInput type="text" id="categoryDescription" placeholder="Category Description" name="categoryDescription"
+                    formControlName="categoryDescription">
+                <mat-error>{{ getCategoryDescriptionBlankMessage() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <div class="c-done-btn-wrapper">
+                <button mat-button type="submit" [disabled]="!categoryForm.valid">Submit</button>
+                <button mat-button type="button" (click)="resetCategory(categoryFormDir)">Reset</button>
+            </div>
+        </form>
+    </div>
+</mat-card>
