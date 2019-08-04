@@ -22,7 +22,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { HttpRequestInterceptService } from 'src/app/service/http-request-intercept.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -42,7 +41,6 @@ import { ReminderFormComponent } from './reminder-form/reminder-form.component';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent,
     DashboardComponent,
     LogoutComponent,
     CategoryComponent,

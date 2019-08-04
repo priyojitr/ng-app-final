@@ -2,7 +2,7 @@
     <mat-card-title>Register User</mat-card-title>
     <div class="c-form">
         <br>
-        <form #regFormDir="ngForm" [formGroup]="registerForm" (ngSubmit)="createUser(registerForm)">
+        <form #regFormDir="ngForm" [formGroup]="registerForm" (ngSubmit)="createUser(regFormDir)">
             <mat-form-field class="c-form-field-wrapper">
                 <input matInput type="text" [(ngModel)]="user.firstName" id="firstname" placeholder="First Name" name="firstname"
                     formControlName="firstname" class="firstname">
