@@ -151,8 +151,17 @@ export class NotesFormComponent implements OnInit {
         try {
           const categoryIdx = this.categories.findIndex(x => x.categoryId === data[`category`].categoryId);
           this.noteForm.get('noteCategory').setValue(this.categories[`${categoryIdx}`]);
+
+          const selRems = data[`reminders`];
+          for (let item of selRems) {
+            this.reminders.findIndex(x => {
+              if (x.reminderId === item.reminderId) {
+                this.selectedReminders.push(x);
+              }
+            });
+          }
+          this.noteForm.get('noteReminder').setValue(this.selectedReminders);
         } catch (ex) {
-          console.log('findindex ex',ex);
         }
       }, err => {
         console.log('error....', err);
